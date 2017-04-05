@@ -31,7 +31,31 @@ public class MainActivity extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });
+        
+        // button for menu 
+        ImageButton menuButton = (ImageButton) findViewById(R.id.menu);
+        //waiting for clicking
+        menuButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick( View v) {
+                Log.d("ButtonForMenu" , "Click the UserInformation Button");
 
+                final Toast toast = android.widget.Toast.makeText(getApplicationContext(),
+                        "Menu Is Clicked", android.widget.Toast.LENGTH_SHORT);
+                toast.show();
+
+                //Here, the handler to make the message to dismiss faster
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        toast.cancel();
+                    }
+                }, 500);
+                menuFunctions();
+            }
+        });
+        
+        
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -97,5 +121,82 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    
+    
+    protected void menuFunctions (){
+        setContentView(R.layout.menu_functions);
+
+
+        Button userAccount = (Button) findViewById(R.id.userInfo);
+        Button settingTool = (Button) findViewById(R.id.settinTool);
+        Button logOutOption = (Button) findViewById(R.id.logout);
+
+        Log.d("ButtonForMenu" , "Here is the Menu Functions Activities");
+
+
+        userAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("ButtonForMenu" , "Click the UserInformation Button");
+
+                //Print the click message
+                final Toast toast = Toast.makeText(getApplicationContext(),
+                        "User Account Click", Toast.LENGTH_SHORT);
+                toast.show();
+
+                //Here the handler to make the message to dismiss faster
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        toast.cancel();
+                    }
+                }, 500);
+            }
+        });
+
+
+        settingTool.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Log.d("ButtonForMenu" , "Click the ToolBox Button");
+
+                //Print the click message
+                final Toast toast = Toast.makeText(getApplicationContext(),
+                        "Tool Box Click", Toast.LENGTH_SHORT);
+                toast.show();
+
+                //Here the handler to make the message to dismiss faster
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        toast.cancel();
+                    }
+                }, 500);
+            }
+        });
+
+        logOutOption.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Log.d("ButtonForMenu" , "Click the Logout Button");
+
+                //Print the click message
+                final Toast toast = Toast.makeText(getApplicationContext(),
+                        "Logout Option Click", Toast.LENGTH_SHORT);
+                toast.show();
+
+                //Here the handler to make the message to dismiss faster
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        toast.cancel();
+                    }
+                }, 500);
+            }
+        });
     }
 }
